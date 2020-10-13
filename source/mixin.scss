@@ -1,0 +1,25 @@
+@mixin transition($transition...) {
+  /* defining prefixes so we can use them in mixins below*/
+  $prefixes:      ("-webkit", "-ms", "-o",  "");
+  @each $prefix in $prefixes {
+    #{$prefix}-transition: $transition;
+  }
+
+  transition: $transition;
+}
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
